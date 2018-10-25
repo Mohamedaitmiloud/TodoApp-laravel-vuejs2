@@ -40,7 +40,8 @@ var app = new Vue({
                             title: this.todo.todo+' has been added',
                             showConfirmButton: false,
                             timer: 1500
-                          })
+                          });
+                          this.todo.id=response.data.id;
                         this.todos.unshift(this.todo);
                         this.count();
                         this.open=false;

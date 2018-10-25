@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="todo app using laravel and vuejs2">
   <meta name="Mohamed Ait Miloud" content="Todos,Laravel and vuejs2">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Todos | Laravel/Vuejs2</title>
   <!-- Favicon -->
   <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png">

@@ -27,7 +27,7 @@ class TodoController extends Controller
         $todo->user_id = Auth::user()->id;
         $todo->todo = $request->todo;
         $todo->save();
-        return response()->json(['etat'=>true]);
+        return response()->json(['etat'=>true,'id'=>$todo->id]);
         
     }
 
