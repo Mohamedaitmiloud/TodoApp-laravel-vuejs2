@@ -16,8 +16,9 @@ class TodoController extends Controller
 
     //get all users todos items
     public function getData(){
+        $userName  = Auth::user()->name;
         $todos = Auth::user()->todos()->orderBy('created_at','desc')->get();
-        return response()->json(['etat'=>true,'todos'=>$todos]);
+        return response()->json(['etat'=>true,'todos'=>$todos,'user'=>$userName]);
         
     }
 
@@ -47,6 +48,17 @@ class TodoController extends Controller
         $todo->delete();
         
         return response()->json(['etat'=>true]);
+        
+    }
+
+    // change name
+
+    public function changeName(Request $request){
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->save();
+        
+        return response()->json(['etat'=>true,'name'=>Auth::user()->name]);
         
     }
 }

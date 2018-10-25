@@ -60,7 +60,7 @@
                 <span class="nav-link-inner--text">{{Auth::user()->name}}</span>
               </a>
               <div class="dropdown-menu">
-                <a href="{{url('/')}}" class="dropdown-item">Edit Profile</a>
+                <a data-toggle="modal" data-target="#modal-notification" class="dropdown-item">Edit Profile</a>
                 <a href="{{url('/')}}" class="dropdown-item">Log out</a>
               </div>
             </li>

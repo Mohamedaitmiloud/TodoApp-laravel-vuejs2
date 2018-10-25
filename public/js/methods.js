@@ -3,6 +3,9 @@ var app = new Vue({
     data:{
         open:false,
         todos:[],
+        user:{
+            name:window.laravel.user_name,
+        },
         numberCount:{
             all:0,
             left:0,
@@ -20,6 +23,7 @@ var app = new Vue({
             axios.get(window.laravel.url + '/getdata/')
                  .then(response=>{
                      if(response.data.etat){
+                         this.user.name = response.data.user;
                          this.todos = response.data.todos;
                          this.count();
                         
@@ -119,7 +123,21 @@ var app = new Vue({
                 }
               })
 
+        },
+        //close modal ini action
+        closeModal:function(){
+            this.user.name = window.laravel.user_name;
+        },
+        //change name
+        changeName:function(){
+            axios.put(window.laravel.url+'/changeName',this.user)
+                 .then(response=>{
+                     if(response.data.etat){
+                         this.user.name = response.data.name;
+                     }
+                 })
         }
+
     },
     created:function(){
         this.getData();

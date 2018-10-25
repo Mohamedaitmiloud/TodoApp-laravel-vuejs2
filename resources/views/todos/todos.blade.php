@@ -59,7 +59,7 @@
               </div>
             </div>
             <div class="text-center mt-5">
-              <h3>{{Auth::user()->name}}
+              <h3>@{{user.name}}
               </h3>
               <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ date('Y-m-d') }}</div>
 
@@ -114,13 +114,53 @@
         </div>
       </div>
     </section>
+     {{--  edite profile modal  --}}
+    <div class="col-md-4">
+      <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content bg-gradient-danger">
+  
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Change name</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+  
+            <div class="modal-body">
+  
+                <div class="py-3 text-center">
+                    <i class="ni ni-single-02 ni-3x"></i>
+                    <h4 class="heading mt-4">@{{user.name}}</h4>
+                    <div class="form-group">
+                      
+                      <input type="text" class="form-control form-control-alternative" name="name" v-model="user.name">
+                      </div>
+                </div>
+  
+            </div>
+  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" @click="changeName" data-dismiss="modal">Change</button>
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal" @click="closeModal"> Close</button>
+            </div>
+  
+        </div>
+    </div>
+  </div>
+  </div>
   </main>
+
+ 
+
+
   @endsection
   @section('js')
   <script>
       window.laravel = {!! json_encode([
           'csrfToken' => csrf_token(),
           'user_id' => Auth::user()->id,
+          'user_name'=>Auth::user()->name,
           'url' => url('/')
       ])!!};
 </script>

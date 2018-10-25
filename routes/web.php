@@ -27,6 +27,10 @@ Route::post('/addTodo','TodoController@addTodo');
 Route::put('/markcompleted/{id}','TodoController@markCompleted');
 //deleting a todo item
 Route::delete('/deleteTodo/{id}','TodoController@deleteTodo');
+//change name
+Route::put('/changeName','TodoController@changeName');
+
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
