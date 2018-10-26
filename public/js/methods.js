@@ -57,7 +57,7 @@ var app = new Vue({
                     }
                  })
                  .catch(error=>{
-                     console.log('error',error);
+                     console.log('error',error.data);
                  })
         },
         //marking a todo item completed
@@ -136,7 +136,16 @@ var app = new Vue({
                          this.user.name = response.data.name;
                      }
                  })
-        }
+        },
+        validateBeforeSubmit() {
+            this.$validator.validateAll().then((result) => {
+              if (result) {
+                    this.addTodo();
+                return;
+              }
+            });
+          }
+
 
     },
     created:function(){

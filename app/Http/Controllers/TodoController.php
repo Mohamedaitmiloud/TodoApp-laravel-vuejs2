@@ -9,6 +9,11 @@ use App\Todo;
 class TodoController extends Controller
 {
 
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     //return view 
     public function index(){
         return view('todos.todos');

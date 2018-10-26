@@ -67,16 +67,22 @@
             <div class="mt-5 py-5 border-top text-center">
               <div class="row justify-content-center">
                 <div v-if="open"class="col-lg-9">
+                    <form @submit.prevent="validateBeforeSubmit">
                         <div class="row">
                           <div class="col-md-8">
-                            <div class="form-group">
-                             <input type="text" class="form-control form-control-alternative" name="todo" placeholder="todo..." v-model="todo.todo">
+                            
+                            <div :class="{'form-group':true ,'has-danger': errors.first('todo')}">
+                             <input type="text"  v-validate="'required|min:3|max:20'" class="form-control form-control" name="todo" placeholder="todo..." v-model="todo.todo">
+                             <span>@{{ errors.first('todo') }}</span>
                              </div>
+                            
                           </div>
                           <div class="col-md-4">
-                            <button type="button" class="btn btn-info" @click="addTodo">Add</button>
+                            <button type="submit" class="btn btn-info">Add</button>
                             <button type="button" class="btn btn-danger" @click="open=false"> close </button>
                           </div>
+                             </form>
+                        
           
                 </div>
               </div>
@@ -166,8 +172,12 @@
 </script>
 <script src="{{ asset('js/app.js') }}"></script>
   <script src="/js/vue.js"></script>
+  <script src="/js/veevalidate.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.8/sweetalert2.all.min.js"></script>
+  <script>
+    Vue.use(VeeValidate);
+  </script>
   <script src="/js/methods.js"></script>
 
 
