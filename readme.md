@@ -1,6 +1,6 @@
 # Laratodo
 
-A simple laravel todo app for for practice purposes
+A simple laravel todo app for practice purposes
 
 ## Built With
 
